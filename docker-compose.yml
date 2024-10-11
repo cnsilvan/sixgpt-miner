@@ -8,6 +8,7 @@ services:
     volumes:
       - ollama:/root/.ollama
     restart: unless-stopped
+    container_name: sixgpt3-ollama
  
   sixgpt3:
     image: sixgpt/miner:latest
@@ -19,6 +20,7 @@ services:
       - VANA_PRIVATE_KEY=${VANA_PRIVATE_KEY}
       - VANA_NETWORK=${VANA_NETWORK}
     restart: unless-stopped
+    container_name: sixgpt3
     
 volumes:
   ollama:
