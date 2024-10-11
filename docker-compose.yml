@@ -20,7 +20,7 @@ services:
       - VANA_PRIVATE_KEY=${VANA_PRIVATE_KEY}
       - VANA_NETWORK=${VANA_NETWORK}
     restart: unless-stopped
-    container_name: sixgpt3
+    container_name: sixgpt3-miner
     
 volumes:
   ollama:
