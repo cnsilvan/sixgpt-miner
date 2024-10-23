@@ -9,6 +9,10 @@ services:
       - ollama:/root/.ollama
     restart: unless-stopped
     container_name: sixgpt3-ollama
+    deploy:
+      resources:
+        limits:
+          cpus: '6.0'
   sixgpt3-satori:
     image: sixgpt/miner:latest
     ports:
