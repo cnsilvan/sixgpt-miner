@@ -1,5 +1,4 @@
 version: '3.8'
-
 services:
   ollama:
     image: ollama/ollama:0.3.12
@@ -22,6 +21,7 @@ services:
     environment:
       - VANA_PRIVATE_KEY=${VANA_PRIVATE_KEY}
       - VANA_NETWORK=satori
+      - OLLAMA_API_URL=http://ollama:11434/api
     restart: unless-stopped
     container_name: sixgpt3-miner-satori
 
@@ -34,6 +34,7 @@ services:
     environment:
       - VANA_PRIVATE_KEY=${VANA_PRIVATE_KEY}
       - VANA_NETWORK=moksha
+      - OLLAMA_API_URL=http://ollama:11434/api
     restart: unless-stopped
     container_name: sixgpt3-miner-moksha
     
