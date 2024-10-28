@@ -13,12 +13,6 @@ services:
       resources:
         limits:
           cpus: '6.0'
-    healthcheck:
-      interval: 30s             # 每30秒检查一次
-      timeout: 30s             # 每次检查的超时时间为10秒
-      retries: 3               # 尝试3次后才算不健康
-      start_period: 180s       # 启动后的180秒内不进行健康检查
-      test: ["CMD-SHELL", "if [ $(docker logs sixgpt3-ollama --since 5m | wc -l) -eq 0 ]; then exit 1; fi"]      
   sixgpt3-satori:
     image: sixgpt/miner:latest
     ports:
@@ -30,12 +24,6 @@ services:
       - VANA_NETWORK=satori
     restart: unless-stopped
     container_name: sixgpt3-miner-satori
-    healthcheck:
-      interval: 30s             # 每30秒检查一次
-      timeout: 30s             # 每次检查的超时时间为10秒
-      retries: 3               # 尝试3次后才算不健康
-      start_period: 180s       # 启动后的180秒内不进行健康检查
-      test: ["CMD-SHELL", "if [ $(docker logs sixgpt3-miner-satori --since 5m | wc -l) -eq 0 ]; then exit 1; fi"]
 
   sixgpt3-moksha:
     image: sixgpt/miner:latest
@@ -48,12 +36,6 @@ services:
       - VANA_NETWORK=moksha
     restart: unless-stopped
     container_name: sixgpt3-miner-moksha
-    healthcheck:
-      interval: 30s             # 每30秒检查一次
-      timeout: 30s             # 每次检查的超时时间为10秒
-      retries: 3               # 尝试3次后才算不健康
-      start_period: 180s       # 启动后的180秒内不进行健康检查
-      test: ["CMD-SHELL", "if [ $(docker logs sixgpt3-miner-moksha --since 5m | wc -l) -eq 0 ]; then exit 1; fi"]
     
 volumes:
   ollama:
