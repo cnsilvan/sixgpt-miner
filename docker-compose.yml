@@ -12,6 +12,11 @@ services:
       resources:
         limits:
           cpus: '6.0'
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
   sixgpt3-moksha:
     image: sixgpt/miner:latest
     ports:
@@ -24,6 +29,11 @@ services:
       - OLLAMA_API_URL=http://ollama:11434/api
     restart: unless-stopped
     container_name: sixgpt3-miner-moksha
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
     
 volumes:
   ollama:
